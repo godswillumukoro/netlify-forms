@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #success {
+            color: green;
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="Getting Started" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input name="bot-field" class="dnone">
+        <input type="text" name="firstname" id="fn" placeholder="First name" required>
+        <input type="email" name="email" id="em" placeholder="Email address" required>
+        <button type="submit">Get started</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form')
+        const successElement = document.querySelector('#success');
+        const errorElement = document.querySelector('#error');
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const myForm = event.target;
+            const formData = new FormData(myForm);
+
+            successElement.classList.add('dnone');
+            errorElement.classList.add('dnone');
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            })
+                .then(() => successElement.classList.remove('dnone'))
+                .catch(() => errorElement.classList.remove('dnone'));
+        })
+    </script>
+</body>
+
+</html>
