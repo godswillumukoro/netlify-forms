@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Getting started with Netlify Forms</title>
 
     <style>
         #success {
@@ -15,6 +15,7 @@
         #error {
             color: red;
         }
+
         .dnone {
             display: none;
         }
@@ -27,6 +28,10 @@
         <input type="text" name="firstname" id="fn" placeholder="First name" required>
         <input type="email" name="email" id="em" placeholder="Email address" required>
         <button type="submit">Get started</button>
+
+        <!-- sign up notification message -->
+        <p id="success" class="dnone">Thanks! You’ve been registered to the waitlist.</p>
+        <p id="error" class="dnone">Sorry, we had an issue connecting to the server.</p>
     </form>
 
     <script>
